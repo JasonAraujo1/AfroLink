@@ -13,7 +13,7 @@ export default function Login() {
                 <button>Entrar</button>
             </View>
 
-            <Link href="">Esqueceu sua senha</Link>
+            <Link style={style.link} href="">Esqueceu sua senha</Link>
 
         </View>
     );
@@ -26,5 +26,9 @@ const style = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#fff",
     },
+    link:{
+        color: 'blue',
+       
+    }
     
 })
