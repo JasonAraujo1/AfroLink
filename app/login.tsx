@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function Login() {
     return (
         <View style={style.container}>
-            <Image source={require('../assets/images/Logo.png')} />
+            <Image source={require('../assets/images/Logo.png')} style={{ width: 100, height: 100 }} />
             <Text>fitConect</Text>
             <View>
                 <input placeholder='E-mail' />
@@ -15,7 +15,7 @@ export default function Login() {
 
             <View style={{ flexDirection: 'row', marginTop: 20 }}>
                 <Text>Ja possui conta?</Text>
-                <Link style={style.link} href="">Fazer login</Link>
+                <Link style={style.link} href="/register">Fazer login</Link>
             </View>
 
         </View>
