@@ -13,7 +13,10 @@ export default function Login() {
                 <button>Entrar</button>
             </View>
 
-            <Link style={style.link} href="">Esqueceu sua senha</Link>
+            <View style={{ flexDirection: 'row', marginTop: 20 }}>
+                <Text>Ja possui conta?</Text>
+                <Link style={style.link} href="">Fazer login</Link>
+            </View>
 
         </View>
     );
@@ -26,9 +29,9 @@ const style = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#fff",
     },
-    link:{
+    link: {
         color: 'blue',
-       
+
     }
-    
+
 })
