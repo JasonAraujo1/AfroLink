@@ -1,20 +1,20 @@
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 
 export default function Login() {
     return (
         <View style={style.container}>
             <Image source={require('../assets/images/logo.png')} style={{ width: 100, height: 100 }} />
             <View>
-                <input placeholder='E-mail' />
-                <input placeholder='Senha' />
-                <button>Entrar</button>
+                <TextInput placeholder='E-mail' />
+                <TextInput placeholder='Senha' />
+                <Button title="Entrar" />
             </View>
 
             <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                <Text>Ja possui conta?</Text>
-                <Link style={style.link} href="/register">Fazer login</Link>
+                <Text>Não possui conta?</Text>
+                <Link style={style.link} href="/register">Fazer Cadastro</Link>
             </View>
 
         </View>
