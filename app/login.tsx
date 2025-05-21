@@ -5,8 +5,7 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function Login() {
     return (
         <View style={style.container}>
-            <Image source={require('../assets/images/Logo.png')} style={{ width: 100, height: 100 }} />
-            <Text>fitConect</Text>
+            <Image source={require('../assets/images/logo.png')} style={{ width: 100, height: 100 }} />
             <View>
                 <input placeholder='E-mail' />
                 <input placeholder='Senha' />
