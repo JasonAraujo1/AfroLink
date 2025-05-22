@@ -1,14 +1,58 @@
 import { Image, Text, TextInput, View, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { Link } from 'expo-router';
-import { Picker } from '@react-native-picker/picker';
+import { Link, useRouter } from 'expo-router';
 
 export default function Register() {
-  const [userType, setUserType] = useState('');
+  const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
 
-  function selecionarTipoUsuario(tipo) {
-    setUserType(tipo);
+  const [nome_completo, setNomeCompleto] = useState('');
+  const [tipo, setTipo] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [estado, setEstado] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [complemento, setComplemento] = useState('');
+
+  const router = useRouter();
+
+  function selecionarOpcao(opcao) {
+    setOpcaoSelecionada(opcao);
+    setTipo(opcao);
   }
+
+  async function handleRegister() {
+    const data = {
+      nome_completo: nome_completo,
+      tipo: tipo,
+      telefone: telefone,
+      email: email,
+      senha: senha,
+      cpf: cpf,
+      cidade: cidade,
+      estado: estado,
+      bairro: bairro,
+      endereco: endereco,
+      complemento: complemento,
+    }
+    const url = "https://67d355c78bca322cc269d90d.mockapi.io/api/v1/users"
+
+    const req = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    const res = await req.json()
+
+    alert("Usuário cadastrado!")
+    router.push("/login")
+  }
+
 
   return (
     <View style={{
@@ -20,55 +64,42 @@ export default function Register() {
       <Image source={require('../assets/images/logo.png')} style={{ width: 100, height: 100 }} />
       <View>
 
-        <TextInput placeholder='Nome' />
-        <TextInput placeholder='Cpf' />
-        <TextInput placeholder='E-mail' />
-        <TextInput placeholder='Foto' />
+        <TextInput placeholder='Nome completo' onChangeText={setNomeCompleto} />
+        <TextInput placeholder='Tipo' onChangeText={setTipo}/>
 
         <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity style={style.radio} onPress={function () { selecionarTipoUsuario('usuario') }}>
+          <TouchableOpacity
+            style={style.radio}
+            onPress={function () { selecionarOpcao('comum') }}
+          >
             <View style={style.radioCircle}>
-              {userType === 'usuario' && <View style={style.selectedRb} />}
+              {opcaoSelecionada === 'comum' && <View style={style.selectedRb} /> }
             </View>
-            <Text>Usuário</Text>
+            <Text>Comum</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.radio} onPress={function () { selecionarTipoUsuario('profissional') }}>
+          <TouchableOpacity
+            style={style.radio}
+            onPress={function () { selecionarOpcao('profissional') }}
+          >
             <View style={style.radioCircle}>
-              {userType === 'profissional' && <View style={style.selectedRb} />}
+              {opcaoSelecionada === 'profissional' && <View style={style.selectedRb} />}
             </View>
             <Text>Profissional</Text>
           </TouchableOpacity>
         </View>
 
+        <TextInput placeholder='Telefone' onChangeText={setTelefone} />
+        <TextInput placeholder='E-mail' onChangeText={setEmail}/>
+        <TextInput placeholder='Senha' onChangeText={setSenha}/>
+        <TextInput placeholder='Cpf' onChangeText={setCpf}/>
+        <TextInput placeholder='Cidade' onChangeText={setCidade}/>
+        <TextInput placeholder='Estado' onChangeText={setEstado}/>
+        <TextInput placeholder='Bairro' onChangeText={setBairro}/>
+        <TextInput placeholder='Endereco' onChangeText={setEndereco}/>
+        <TextInput placeholder='Complemento' onChangeText={setComplemento}/>
 
-        {userType === 'profissional' && (
-          <View>
-
-            <Picker
-              selectedValue={''}
-              onValueChange={function () { }}
-            >
-              <Picker.Item label="Selecione a profissão" value="" />
-            </Picker>
-
-            <Picker
-              selectedValue={''}
-              onValueChange={function () { }}
-            >
-              <Picker.Item label="Selecione o estado" value="" />
-            </Picker>
-
-            <Picker
-              selectedValue={''}
-              onValueChange={function () { }}
-            >
-              <Picker.Item label="Selecione a cidade" value="" />
-            </Picker>
-          </View>
-        )}
-
-        <Button title="Cadastrar" onPress={function () { }} />
+        <Button title="Cadastrar" onPress={function () { handleRegister() }} />
       </View>
 
       <View style={{ flexDirection: 'row', marginTop: 20 }}>

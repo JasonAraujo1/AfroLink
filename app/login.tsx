@@ -7,18 +7,18 @@ import { fetchApiUsers } from '../app/services/fetchApi';
 
 
 export default function Login() {
-    const [userInputName, setUserInputName ] = useState('')
-    const [userInputPassword, setUserInputPassword ] = useState('')
+    const [userInputEmail, setUserInputEmail ] = useState('')
+    const [userInputSenha, setUserInputSenha ] = useState('')
 
     const router = useRouter()
 
     async function handleLogin() {
         const data = await fetchApiUsers()
-        const userFound = data.find(user => user.name === userInputName && user.password === userInputPassword)
+        const userFound = data.find(user => user.email === userInputEmail && user.senha === userInputSenha)
         if (userFound) {
             router.push('/')
         }
-        console.log(userInputName, userInputPassword)
+        
     }
 
 
@@ -26,8 +26,8 @@ export default function Login() {
         <View style={style.container}>
             <Image source={require('../assets/images/logo.png')} style={{ width: 100, height: 100 }} />
             <View>
-                <TextInput placeholder='E-mail' onChangeText ={setUserInputName} />
-                <TextInput placeholder='Senha' onChangeText ={setUserInputPassword} />
+                <TextInput placeholder='E-mail' onChangeText ={setUserInputEmail} />
+                <TextInput placeholder='Senha' onChangeText ={setUserInputSenha} />
                 <Button onPress={handleLogin} title="Entrar" />
             </View>
 
