@@ -3,25 +3,25 @@ import React, { useState } from 'react';
 import { Link, useRouter } from 'expo-router';
 
 export default function Register() {
-  const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
+  const [opcaoSelecionada, setOpcaoSelecionada] = useState('')
 
-  const [nome_completo, setNomeCompleto] = useState('');
-  const [tipo, setTipo] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [cidade, setCidade] = useState('');
-  const [estado, setEstado] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [endereco, setEndereco] = useState('');
-  const [complemento, setComplemento] = useState('');
+  const [nome_completo, setNomeCompleto] = useState('')
+  const [tipo, setTipo] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [cidade, setCidade] = useState('')
+  const [estado, setEstado] = useState('')
+  const [bairro, setBairro] = useState('')
+  const [endereco, setEndereco] = useState('')
+  const [complemento, setComplemento] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
 
   function selecionarOpcao(opcao) {
-    setOpcaoSelecionada(opcao);
-    setTipo(opcao);
+    setOpcaoSelecionada(opcao)
+    setTipo(opcao)
   }
 
   async function handleRegister() {
